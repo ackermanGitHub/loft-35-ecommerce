@@ -14,12 +14,11 @@ const ProductItem: React.FC<IProps> = ({ product }) => {
         <Image
           src={product.image}
           alt={product.name}
+          className="rounded shadow"
           width={200}
           height={200}
-          className="rounded shadow"
         />
       </Link>
-
       <div className="flex flex-col items-center justify-center p-5">
         <Link href={`/product/${product.slug}`}>
           <h2 className="text-lg">{product.name}</h2>
