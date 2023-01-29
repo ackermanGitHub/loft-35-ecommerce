@@ -4,7 +4,6 @@ import Image from 'next/image';
 import data, { IProduct } from '@/utils/data';
 import Layout from '@/containers/Layout';
 import { useRouter } from 'next/router';
-import Store from '@/context/Store';
 
 interface IProps {}
 
