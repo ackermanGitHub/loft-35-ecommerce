@@ -11,7 +11,7 @@ const Header: React.FC<IProps> = () => {
           Loft 35
         </Link>
         <div>
-          <Link href="/">Carrito</Link>
+          <Link href="/"></Link>
           <Link href="/">Facebook</Link>
           <Link href="/">Intagram</Link>
         </div>
