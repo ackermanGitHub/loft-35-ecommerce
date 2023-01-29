@@ -5,7 +5,7 @@ import data from '@/utils/data';
 export default function Home() {
   return (
     <Layout title="Home Page">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="flex flex-wrap justify-around max-w-2xl m-auto">
         {data.products.map((product): React.ReactNode => {
           return <ProductItem product={product} key={product.slug} />;
         })}

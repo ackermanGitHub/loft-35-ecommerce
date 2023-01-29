@@ -106,11 +106,11 @@ a {
 }
 
 .card {
-  @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
+  @apply flex flex-col w-40 h-72 items-center mb-5 mx-2 rounded-lg border border-gray-200 shadow-md;
 }
 
 .primary-button {
-  @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500;
+  @apply rounded bg-amber-300 shadow outline-none hover:bg-amber-400 active:bg-amber-500;
 }
 
 /* 
