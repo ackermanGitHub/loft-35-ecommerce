@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import data, { IProduct } from '@/utils/data';
 import Layout from '@/containers/Layout';
 import { useRouter } from 'next/router';
+import Store from '@/context/Store';
 
 interface IProps {}
 
@@ -17,6 +18,9 @@ const ProductScreen: React.FC<IProps> = () => {
   if (!product) {
     return <div>Product Not Found</div>;
   }
+
+  const addToCartHandler = () => {};
+
   return (
     <Layout title={product.name}>
       <div className="py-2">
@@ -26,9 +30,11 @@ const ProductScreen: React.FC<IProps> = () => {
         <div className="md:col-soan-2">
           <Image
             src={product.image}
-            alt={'product.name'}
+            alt={product.name}
             width={640}
             height={640}
+            sizes="responsive"
+            priority
           />
         </div>
         <ul>
@@ -45,7 +51,7 @@ const ProductScreen: React.FC<IProps> = () => {
         </ul>
       </div>
       <div>
-        <div className="card p-5">
+        <div className="details-card p-5">
           <div className="mb-2 flex justify-between">
             <div>Price</div>
             <div>${product.price} </div>
@@ -54,7 +60,12 @@ const ProductScreen: React.FC<IProps> = () => {
             <div>Status</div>
             <div> {product.countInStock > 0 ? 'In stock' : 'Unavailable'} </div>
           </div>
-          <button className="primary-button w-full">Add to cart</button>
+          <button
+            className="details-primary-button w-full"
+            onClick={addToCartHandler}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </Layout>

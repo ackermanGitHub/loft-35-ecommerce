@@ -15,7 +15,6 @@ const Layout: React.FC<IProps> = ({ children, title }) => {
         <title>{title ? title + ' - Loft 35' : 'Loft 35'}</title>
         <meta name="description" content="Loft-35 Store Sales Sistem" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/icons/L35-logo.png" />
       </Head>
       <div className="flex min-h-screen flex-col justify-between">
         <Header />

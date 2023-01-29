@@ -17,6 +17,7 @@ const ProductItem: React.FC<IProps> = ({ product }) => {
           className="rounded shadow"
           width={160}
           height={160}
+          priority
         />
       </Link>
       <div className="flex flex-col items-center justify-center m-auto">
