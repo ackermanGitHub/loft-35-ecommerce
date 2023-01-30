@@ -11,6 +11,7 @@ export interface IProduct {
   description: string;
   isFeatured?: boolean;
   banner?: string;
+  quantity?: number;
 }
 
 const data = {

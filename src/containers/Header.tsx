@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Store } from '@/context/Store';
 
 interface IProps {}
 
 const Header: React.FC<IProps> = () => {
+  const { state } = useContext(Store);
+  const { cart } = state;
+
   return (
     <header>
       <nav className="flex h-12 items-center px-4 justify-between shadow-md mt-2">
@@ -28,6 +32,11 @@ const Header: React.FC<IProps> = () => {
               height={24}
               priority
             />
+            {cart.cartItems.length > 0 && (
+              <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                {cart.cartItems.reduce((a, c) => a + (c.quantity || 0), 0)}
+              </span>
+            )}
           </Link>
           <Link href="/" className="mx-2">
             <Image

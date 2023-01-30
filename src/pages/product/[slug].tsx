@@ -4,10 +4,13 @@ import Image from 'next/image';
 import data, { IProduct } from '@/utils/data';
 import Layout from '@/containers/Layout';
 import { useRouter } from 'next/router';
+import { Store } from '@/context/Store';
 
 interface IProps {}
 
 const ProductScreen: React.FC<IProps> = () => {
+  const { state, dispatch } = useContext(Store);
+
   const { query } = useRouter();
   const { slug } = query;
   const product: IProduct | undefined = data.products.find(
@@ -18,7 +21,20 @@ const ProductScreen: React.FC<IProps> = () => {
     return <div>Product Not Found</div>;
   }
 
-  const addToCartHandler = () => {};
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem?.quantity ? existItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      alert('Sorry. Product is out of stock');
+      return;
+    }
+
+    dispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity: quantity },
+    });
+  };
 
   return (
     <Layout title={product.name}>
