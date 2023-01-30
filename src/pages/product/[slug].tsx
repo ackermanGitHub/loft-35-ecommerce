@@ -11,6 +11,8 @@ interface IProps {}
 const ProductScreen: React.FC<IProps> = () => {
   const { state, dispatch } = useContext(Store);
 
+  const router = useRouter();
+
   const { query } = useRouter();
   const { slug } = query;
   const product: IProduct | undefined = data.products.find(
@@ -34,6 +36,7 @@ const ProductScreen: React.FC<IProps> = () => {
       type: 'CART_ADD_ITEM',
       payload: { ...product, quantity: quantity },
     });
+    router.push('/cart');
   };
 
   return (

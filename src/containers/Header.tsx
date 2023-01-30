@@ -25,6 +25,26 @@ const Header: React.FC<IProps> = () => {
         <div className="flex h-8 items-center">
           <Link href="/" className="mx-2">
             <Image
+              src="/icons/instagram.svg"
+              alt="Dirección del Instagram"
+              className={'Instagram'}
+              width={24}
+              height={24}
+              priority
+            />
+          </Link>
+          <Link href="/" className="mx-2">
+            <Image
+              src="/icons/facebook.svg"
+              alt="Dirección del Facebook"
+              className={'Facebook'}
+              width={24}
+              height={24}
+              priority
+            />
+          </Link>
+          <Link href="/cart" className="mx-2">
+            <Image
               src="/icons/cart.svg"
               alt="Carrito de Compras"
               className={'shopping-cart'}
@@ -37,26 +57,6 @@ const Header: React.FC<IProps> = () => {
                 {cart.cartItems.reduce((a, c) => a + (c.quantity || 0), 0)}
               </span>
             )}
-          </Link>
-          <Link href="/" className="mx-2">
-            <Image
-              src="/icons/facebook.svg"
-              alt="Dirección del Facebook"
-              className={'Facebook'}
-              width={24}
-              height={24}
-              priority
-            />
-          </Link>
-          <Link href="/" className="mx-2">
-            <Image
-              src="/icons/instagram.svg"
-              alt="Dirección del Instagram"
-              className={'Instagram'}
-              width={24}
-              height={24}
-              priority
-            />
           </Link>
         </div>
       </nav>

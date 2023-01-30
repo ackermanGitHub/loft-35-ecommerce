@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IProduct } from '@/utils/data';
+import { useRouter } from 'next/router';
+import { Store } from '@/context/Store';
 
 interface IProps {
   product: IProduct;
 }
 
 const ProductItem: React.FC<IProps> = ({ product }) => {
+  const { state, dispatch } = useContext(Store);
+
+  const router = useRouter();
+
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem?.quantity ? existItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      alert('Sorry. Product is out of stock');
+      return;
+    }
+
+    dispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity: quantity },
+    });
+    router.push('/cart');
+  };
+
   return (
     <div className="card">
       <Link href={`/product/${product.slug}`}>
@@ -29,6 +51,7 @@ const ProductItem: React.FC<IProps> = ({ product }) => {
         <button
           className="primary-button h-9 w-20 text-center text-xs"
           type="button"
+          onClick={addToCartHandler}
         >
           Añadir al Carrito
         </button>
