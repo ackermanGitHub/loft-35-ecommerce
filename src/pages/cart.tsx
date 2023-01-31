@@ -20,6 +20,12 @@ const Cart: React.FC<IProps> = ({}) => {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
 
+  const updateCartHandler = (item: IProduct, qty: Number) => {
+    const quantity = Number(qty);
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+    console.log({ ...item, quantity });
+  };
+
   return (
     <Layout>
       <h1 className="mb-4 text-xl">Shopping Cart</h1>
@@ -58,7 +64,23 @@ const Cart: React.FC<IProps> = ({}) => {
                         {item.name}
                       </Link>
                     </td>
-                    <td className="p-5 text-right">{item.quantity}</td>
+                    <td className="p-5 text-right">
+                      <select
+                        value={item.quantity}
+                        onChange={(e) => {
+                          updateCartHandler(item, parseInt(e.target.value));
+                        }}
+                      >
+                        {Array.from(
+                          { length: item.countInStock },
+                          (_, i) => i + 1
+                        ).map((x) => (
+                          <option key={x} value={x}>
+                            {x}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
                     <td className="p-5 text-right">{item.price}</td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItemHandler(item)}>

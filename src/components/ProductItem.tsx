@@ -12,8 +12,6 @@ interface IProps {
 const ProductItem: React.FC<IProps> = ({ product }) => {
   const { state, dispatch } = useContext(Store);
 
-  const router = useRouter();
-
   const addToCartHandler = () => {
     const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
     const quantity = existItem?.quantity ? existItem.quantity + 1 : 1;
@@ -27,7 +25,6 @@ const ProductItem: React.FC<IProps> = ({ product }) => {
       type: 'CART_ADD_ITEM',
       payload: { ...product, quantity: quantity },
     });
-    router.push('/cart');
   };
 
   return (

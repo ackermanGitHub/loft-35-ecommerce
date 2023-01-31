@@ -14,11 +14,11 @@ const Header: React.FC<IProps> = () => {
       <nav className="flex h-12 items-center px-4 justify-between shadow-md mt-2">
         <Link href="/">
           <Image
-            src="/icons/Loft-35-Beauty.png"
+            src="/icons/Loft-35-Beauty-shadow.png"
             alt="Carrito de Compras"
             className={'Loft-35-Beauty w-auto'}
-            width={36}
-            height={36}
+            width={50}
+            height={50}
             priority
           />
         </Link>
@@ -43,7 +43,7 @@ const Header: React.FC<IProps> = () => {
               priority
             />
           </Link>
-          <Link href="/cart" className="mx-2">
+          <Link href="/cart" className="mx-2 relative">
             <Image
               src="/icons/cart.svg"
               alt="Carrito de Compras"
@@ -53,7 +53,7 @@ const Header: React.FC<IProps> = () => {
               priority
             />
             {cart.cartItems.length > 0 && (
-              <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+              <span className="absolute top-4 right-0 text-center text-xs rounded-full bg-red-600 font-bold text-white w-4 h-4">
                 {cart.cartItems.reduce((a, c) => a + (c.quantity || 0), 0)}
               </span>
             )}
