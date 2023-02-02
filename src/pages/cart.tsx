@@ -6,6 +6,7 @@ import React, { useContext } from 'react';
 import { XCircleIcon } from '@heroicons/react/20/solid';
 import { IProduct } from '@/utils/data';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 interface IProps {}
 
@@ -96,8 +97,8 @@ const Cart: React.FC<IProps> = ({}) => {
             <ul>
               <li>
                 <div className="pb-3 test-xl">
-                  Subtotal (
-                  {cartItems.reduce((a, c) => a + (c.quantity || 0), 0)}) : $
+                  Subtotal
+                  {cartItems.reduce((a, c) => a + (c.quantity || 0), 0)} : $
                   {cartItems.reduce(
                     (a, c) => a + (c.quantity || 0) * c.price,
                     0
@@ -106,7 +107,7 @@ const Cart: React.FC<IProps> = ({}) => {
               </li>
               <li>
                 <button
-                  onClick={() => router.push('/shipping')}
+                  onClick={() => router.push('login?redirect=/shipping')}
                   className="primary-button w-full"
                 >
                   Check Out
@@ -120,4 +121,4 @@ const Cart: React.FC<IProps> = ({}) => {
   );
 };
 
-export default Cart;
+export default dynamic(() => Promise.resolve(Cart), { ssr: false });
