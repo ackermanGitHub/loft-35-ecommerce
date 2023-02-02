@@ -31,6 +31,9 @@ const Header: React.FC<IProps> = () => {
           />
         </Link>
         <div className="flex h-8 items-center">
+          <Link href="/login" className="mx-2">
+            <h1 className="">Login</h1>
+          </Link>
           <Link href="/" className="mx-2">
             <Image
               src="/icons/instagram.svg"
