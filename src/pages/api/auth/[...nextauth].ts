@@ -24,12 +24,14 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     CredentialsProvider({
-      type: 'credentials',
+      /* id: '12345678',
+      name: 'Lf35-credentials',
+      type: 'credentials', */
       credentials: {
-        email: { label: 'Email', type: 'email', placeholder: 'me@email.com' },
-        password: { label: 'Password', type: 'password' },
+        email: { label: 'email', type: 'email', placeholder: 'me@email.com' },
+        password: { label: 'password', type: 'password' },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const { email, password } = credentials as {
           email: string;
           password: string;
@@ -38,8 +40,12 @@ export const authOptions: NextAuthOptions = {
         const user = await User.findOne({
           email: email,
         });
-        await db.disconnect();
-        if (user && bcryptjs.compareSync(password, user.password)) {
+        console.log(user); // this works fine
+        console.log(user.password === password); // logs true
+        console.log(bcryptjs.compareSync(password, user.password)); // logs false, whats going on here?
+
+        await db.disconnect(); // this logs "not disconected" here
+        if (user /* && bcryptjs.compareSync(password, user.password) */) {
           return {
             id: user._id,
             name: user.name,

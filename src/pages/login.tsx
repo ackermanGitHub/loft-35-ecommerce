@@ -1,7 +1,11 @@
+import { useForm, SubmitHandler } from 'react-hook-form';
 import Link from 'next/link';
-import React from 'react';
-import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
+import { signIn, useSession } from 'next-auth/react';
 import Layout from '@/containers/Layout';
+import { getError } from '@/utils/error';
+import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface FormData {
   email: string;
@@ -9,14 +13,39 @@ interface FormData {
 }
 
 export default function LoginScreen() {
+  const { data: session } = useSession();
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    if (session?.user) {
+      router.push((redirect as string) || '/');
+    }
+  }, [router, session, redirect]);
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormData>();
 
-  const submitHandler: SubmitHandler<FormData> = (data) => {
-    console.log(data.email, data.password);
+  const submitHandler: SubmitHandler<FormData> = async ({
+    email,
+    password,
+  }) => {
+    try {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+      console.log(result);
+      if (result?.error) {
+        toast.error(result.error);
+      }
+    } catch (err) {
+      toast.error(getError(err));
+    }
   };
 
   return (

@@ -1,11 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Store } from '@/context/Store';
+import { useSession } from 'next-auth/react';
 
 interface IProps {}
 
 const Header: React.FC<IProps> = () => {
+  const { status, data: session } = useSession();
+
   const { state } = useContext(Store);
   const { cart } = state;
 
@@ -31,9 +34,6 @@ const Header: React.FC<IProps> = () => {
           />
         </Link>
         <div className="flex h-8 items-center">
-          <Link href="/login" className="mx-2">
-            <h1 className="">Login</h1>
-          </Link>
           <Link href="/" className="mx-2">
             <Image
               src="/icons/instagram.svg"
@@ -69,6 +69,17 @@ const Header: React.FC<IProps> = () => {
               </span>
             )}
           </Link>
+          <h1 className="">
+            {status === 'loading' ? (
+              <></>
+            ) : session?.user ? (
+              session.user.name
+            ) : (
+              <Link href="/login" className="mx-2">
+                Login
+              </Link>
+            )}
+          </h1>
         </div>
       </nav>
     </header>
