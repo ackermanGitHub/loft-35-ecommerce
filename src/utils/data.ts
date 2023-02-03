@@ -15,6 +15,12 @@ export interface IProduct {
   banner?: string;
   quantity?: number;
 }
+export interface IUser {
+  name: string;
+  email: string;
+  password: string;
+  isAdmin: boolean;
+}
 
 const data = {
   users: [
