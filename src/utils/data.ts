@@ -1,3 +1,5 @@
+import bcrypt from 'bcryptjs';
+
 export interface IProduct {
   name: string;
   slug: string;
@@ -19,13 +21,13 @@ const data = {
     {
       name: 'John',
       email: 'admin@example.com',
-      password: 123456,
+      password: bcrypt.hashSync('123456'),
       isAdmin: true,
     },
     {
       name: 'Jane',
       email: 'user@example.com',
-      password: 123456,
+      password: bcrypt.hashSync('123456'),
       isAdmin: false,
     },
   ],
