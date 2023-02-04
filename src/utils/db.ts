@@ -9,6 +9,7 @@ const connection: Connection = {
 };
 
 async function connect(): Promise<void> {
+  mongoose.set('strictQuery', false);
   if (connection.isConnected) {
     console.log('already connected');
     return;

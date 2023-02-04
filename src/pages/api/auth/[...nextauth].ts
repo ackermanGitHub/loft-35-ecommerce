@@ -23,9 +23,6 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     CredentialsProvider({
-      id: '12345678',
-      name: 'Lf35-credentials',
-      type: 'credentials',
       credentials: {
         email: { label: 'email', type: 'email', placeholder: 'me@email.com' },
         password: { label: 'password', type: 'password' },
