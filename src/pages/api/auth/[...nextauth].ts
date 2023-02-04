@@ -3,7 +3,6 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import User from '@/models/User';
 import db from '@/utils/db';
 import bcryptjs from 'bcryptjs';
-import { JWT } from 'next-auth/jwt/types';
 import { Session } from 'next-auth/core/types';
 
 export const authOptions: NextAuthOptions = {
@@ -58,6 +57,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  secret: 'secretL35',
 };
 
 export default NextAuth(authOptions);
