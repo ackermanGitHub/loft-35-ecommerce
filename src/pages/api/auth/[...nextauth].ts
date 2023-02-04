@@ -39,9 +39,9 @@ export const authOptions: NextAuthOptions = {
         const user = await User.findOne({
           email: email,
         });
-        //console.log(user); // this works fine
-        //console.log(user.password === password); // logs true
-        //console.log(bcryptjs.compareSync(password, user.password)); // logs false, whats going on here?
+        console.log(user); // this works fine
+        console.log(user.password === password); // logs true
+        console.log(bcryptjs.compareSync(password, user.password)); // logs false, whats going on here?
 
         await db.disconnect(); // this logs "not disconected" here
         if (user && user.password === password) {
@@ -57,6 +57,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  secret: 'loft-35-ecommerce',
 };
 
 export default NextAuth(authOptions);
