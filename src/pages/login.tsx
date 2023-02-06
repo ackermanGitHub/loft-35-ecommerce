@@ -1,11 +1,11 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
-import Link from 'next/link';
-import { signIn, useSession } from 'next-auth/react';
-import Layout from '@/containers/Layout';
-import { getError } from '@/utils/error';
-import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { signIn, useSession } from 'next-auth/react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import Layout from '@/containers/Layout';
+import { getError } from '@/utils/error';
 
 interface FormData {
   email: string;
@@ -14,6 +14,7 @@ interface FormData {
 
 export default function LoginScreen() {
   const { data: session } = useSession();
+
   const router = useRouter();
   const { redirect } = router.query;
 
@@ -39,7 +40,6 @@ export default function LoginScreen() {
         email,
         password,
       });
-      console.log(result);
       if (result?.error) {
         toast.error(result.error);
       }

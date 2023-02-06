@@ -1,15 +1,17 @@
 import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSession, signOut } from 'next-auth/react';
+import { Menu } from '@headlessui/react';
 import { Store } from '@/context/Store';
-import { useSession } from 'next-auth/react';
+import Cookies from 'js-cookie';
 
 interface IProps {}
 
 const Header: React.FC<IProps> = () => {
   const { status, data: session } = useSession();
 
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { cart } = state;
 
   const [cartItemsCount, setCartItemsCount] = useState(0);
@@ -19,6 +21,15 @@ const Header: React.FC<IProps> = () => {
       cart.cartItems.reduce((a, c) => a + (c.quantity || 0), 0)
     );
   }, [cart.cartItems]);
+
+  const logoutHandler = () => {
+    Cookies.remove('cart');
+    dispatch({
+      type: 'CART_RESET',
+      payload: undefined,
+    });
+    signOut({ callbackUrl: '/login' });
+  };
 
   return (
     <header>
@@ -64,7 +75,7 @@ const Header: React.FC<IProps> = () => {
               priority
             />
             {cartItemsCount > 0 && (
-              <span className="cart-span absolute top-3 left-2 text-center rounded-full bg-red-600 text-white w-3 h-3">
+              <span className="text-5xs absolute top-3 left-2 text-center rounded-full bg-red-600 text-white w-3 h-3">
                 {cartItemsCount}
               </span>
             )}
@@ -73,7 +84,27 @@ const Header: React.FC<IProps> = () => {
             {status === 'loading' ? (
               <></>
             ) : session?.user ? (
-              session.user.name
+              <Menu as="div" className="relative inline-block">
+                <Menu.Button className="text-blue-600">
+                  {session.user.name}
+                </Menu.Button>
+                <Menu.Items className="absolute right-0 w-32 origin-top-right bg-white shadow-lg">
+                  <Menu.Item>
+                    <Link className="dropdown-link" href="/profile">
+                      Profile
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link
+                      className="dropdown-link"
+                      href="/#"
+                      onClick={logoutHandler}
+                    >
+                      Logout
+                    </Link>
+                  </Menu.Item>
+                </Menu.Items>
+              </Menu>
             ) : (
               <Link href="/login" className="mx-2">
                 Login

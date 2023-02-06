@@ -121,14 +121,14 @@ a {
   @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500;
 }
 
+.dropdown-link {
+  @apply flex p-2 hover:bg-gray-200;
+}
+
 input,
 select,
 textarea {
   @apply rounded border p-2  outline-none ring-indigo-300  focus:ring;
-}
-
-.cart-span {
-  font-size: 8px;
 }
 
 /* 

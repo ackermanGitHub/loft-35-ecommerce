@@ -14,7 +14,7 @@ interface IStore {
   state: IState;
   dispatch: React.Dispatch<{
     type: string;
-    payload: IProduct;
+    payload: IProduct | undefined;
   }>;
 }
 
@@ -28,7 +28,10 @@ const initialState: IState = {
 
 const store: IStore = {
   state: initialState,
-  dispatch: function (value: { type: string; payload: IProduct }): void {
+  dispatch: function (value: {
+    type: string;
+    payload: IProduct | undefined;
+  }): void {
     throw new Error('Function not implemented.');
   },
 };
@@ -37,10 +40,11 @@ export const Store = createContext(store);
 
 function reducer(
   state: IState,
-  action: { type: string; payload: IProduct }
+  action: { type: string; payload?: IProduct }
 ): IState {
   switch (action.type) {
     case 'CART_ADD_ITEM': {
+      if (!action.payload) return state;
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(
         (item: IProduct) => item.slug === newItem.slug
@@ -55,12 +59,21 @@ function reducer(
       return { ...state, cart: { ...state.cart, cartItems } };
     }
     case 'CART_REMOVE_ITEM': {
+      if (!action.payload) return state;
+      const removedItem = action.payload;
       const cartItems = state.cart.cartItems.filter(
-        (item) => item.slug !== action.payload.slug
+        (item) => item.slug !== removedItem.slug
       );
       Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems }));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
+    case 'CART_RESET':
+      return {
+        ...state,
+        cart: {
+          cartItems: [],
+        },
+      };
     default:
       return state;
   }

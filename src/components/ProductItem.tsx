@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IProduct } from '@/utils/data';
-import { useRouter } from 'next/router';
 import { Store } from '@/context/Store';
 
 interface IProps {
