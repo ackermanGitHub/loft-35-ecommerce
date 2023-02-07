@@ -24,8 +24,9 @@ interface IAction {
     | 'CART_ADD_ITEM'
     | 'CART_REMOVE_ITEM'
     | 'CART_RESET'
-    | 'SAVE_SHIPPING_ADDRESS';
-  payload?: IProduct | IShippingAddress;
+    | 'SAVE_SHIPPING_ADDRESS'
+    | 'SAVE_PAYMENT_METHOD';
+  payload?: IProduct | IShippingAddress | string;
 }
 
 const initialState: IState = {
@@ -98,8 +99,16 @@ function reducer(state: IState, action: IAction): IState {
           ...state.cart,
           shippingAddress: {
             ...state.cart.shippingAddress,
-            ...action.payload,
+            ...(action.payload as IShippingAddress),
           },
+        },
+      };
+    case 'SAVE_PAYMENT_METHOD':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          paymentMethod: action.payload as string,
         },
       };
     default:
