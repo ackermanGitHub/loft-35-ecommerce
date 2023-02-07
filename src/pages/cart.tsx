@@ -24,7 +24,6 @@ const Cart: React.FC<IProps> = ({}) => {
   const updateCartHandler = (item: IProduct, qty: Number) => {
     const quantity = Number(qty);
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
-    console.log({ ...item, quantity });
   };
 
   return (

@@ -28,7 +28,7 @@ const Header: React.FC<IProps> = () => {
       type: 'CART_RESET',
       payload: undefined,
     });
-    signOut({ callbackUrl: '/login' });
+    signOut({ callbackUrl: '/' });
   };
 
   return (
