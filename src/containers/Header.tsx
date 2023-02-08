@@ -33,17 +33,7 @@ const Header: React.FC<IProps> = () => {
 
   return (
     <header>
-      <nav className="flex h-12 items-center px-4 justify-between shadow-md mt-2">
-        <Link href="/">
-          <Image
-            src="/icons/Loft-35-Beauty-shadow.png"
-            alt="Carrito de Compras"
-            className={'Loft-35-Beauty w-auto'}
-            width={35}
-            height={35}
-            priority
-          />
-        </Link>
+      <nav className="flex h-12 items-center px-4 justify-end shadow-md mt-2">
         <div className="flex h-8 items-center">
           <Link href="/" className="mx-2">
             <Image

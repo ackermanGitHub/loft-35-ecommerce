@@ -68,9 +68,12 @@ const Payment = () => {
             Back
           </button>
           <button
-            onClick={() => router.push('/shipping')}
+            onClick={() => {
+              //router.push('/shipping');
+              console.log('/shipping');
+            }}
             type="button"
-            className="details-primary-button"
+            className="primary-button"
           >
             Next
           </button>

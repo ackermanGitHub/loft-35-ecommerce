@@ -34,3 +34,33 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# unused images
+public/images/Example/banner1.jpg
+public/images/Example/banner2.jpg
+public/images/Example/pants1.jpg
+public/images/Example/pants2.jpg
+public/images/Example/pants3.jpg
+public/images/Example/shirt1.jpg
+public/images/Example/shirt2.jpg
+public/images/Example/shirt3.jpg
+public/images/models/loft_35_kidd.jpg
+public/images/models/modelo_short_pullover.jpg
+public/images/models/modelo_vestido_naranja_gafas_1.jpg
+public/images/models/modelo_vestido_naranja_gafas.jpg
+public/images/models/modelo_vestido_naranja_sombrero.jpg
+public/images/models/modelo_vestido_rojo.jpg
+public/images/models/modelo_vestido_verde_blanco.jpg
+public/images/models/modelos_2_azul_naranja.jpg
+public/images/models/modelos_2_blanco_negro.jpg
+public/images/products/pullover_frase.jpg
+public/images/products/pullovers_zara.jpg
+public/images/products/sandalias_5.jpg
+public/images/products/trusa_bolso.jpg
+public/images/products/trusas.jpg
+public/images/store/cactus.jpg
+public/images/store/exterior.jpg
+public/images/store/header_view.jpg
+public/images/store/interior_1.jpg
+public/images/store/interior.jpg
+public/images/store/inside_bathroom.jpg

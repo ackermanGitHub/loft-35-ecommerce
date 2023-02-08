@@ -1,19 +1,67 @@
 import bcrypt from 'bcryptjs';
 
+export class Product implements IProduct {
+  name: string;
+  slug: string;
+  category: string;
+  image: string;
+  price: number;
+  rating: number;
+  numReviews: number;
+  countInStock: number;
+  description: string;
+  brand?: string;
+  isFeatured?: boolean;
+  quantity?: number;
+  width?: number;
+  height?: number;
+
+  constructor(product: IProduct) {
+    this.name = product.name;
+    this.slug = product.slug;
+    this.category = product.category;
+    this.image = product.image;
+    this.price = product.price;
+    this.rating = product.rating;
+    this.numReviews = product.numReviews;
+    this.countInStock = product.countInStock;
+    this.description = product.description;
+    this.brand = product.brand;
+    this.isFeatured = product.isFeatured;
+    this.quantity = product.quantity;
+    this.width = product.width;
+    this.height = product.height;
+  }
+}
 export interface IProduct {
   name: string;
   slug: string;
   category: string;
   image: string;
   price: number;
-  brand: string;
   rating: number;
   numReviews: number;
   countInStock: number;
   description: string;
+  brand?: string;
   isFeatured?: boolean;
-  banner?: string;
   quantity?: number;
+  width?: number;
+  height?: number;
+}
+
+export class User implements IUser {
+  name: string;
+  email: string;
+  password: string;
+  isAdmin: boolean;
+
+  constructor(user: IUser) {
+    this.name = user.name;
+    this.email = user.email;
+    this.password = user.password;
+    this.isAdmin = user.isAdmin;
+  }
 }
 export interface IUser {
   name: string;
@@ -25,16 +73,16 @@ export interface IUser {
 const data = {
   users: [
     {
-      name: 'John',
-      email: 'admin@example.com',
-      password: bcrypt.hashSync('123456'),
+      name: 'Annet',
+      email: 'annet.loft35@gmail.com',
+      password: bcrypt.hashSync('fiftychen'),
       isAdmin: true,
     },
     {
-      name: 'Jane',
-      email: 'user@example.com',
-      password: bcrypt.hashSync('123456'),
-      isAdmin: false,
+      name: 'Mely',
+      email: 'mely.loft35@gmail.com',
+      password: bcrypt.hashSync('fiftychen'),
+      isAdmin: true,
     },
     {
       name: 'Julio',
@@ -43,88 +91,99 @@ const data = {
       isAdmin: true,
     },
     {
-      name: 'Karla',
-      email: 'karla.isabel@gmail.com',
-      password: bcrypt.hashSync('123456'),
-      isAdmin: true,
+      name: 'Morel',
+      email: 'morel.fiftychen@gmail.com',
+      password: bcrypt.hashSync('fiftychen'),
+      isAdmin: false,
     },
   ],
   products: [
     {
-      name: 'Free Shirt',
-      slug: 'free-shirt',
-      category: 'Shirts',
-      image: '/images/shirt1.jpg',
-      price: 70,
-      brand: 'Nike',
+      name: 'Blusa Clarita',
+      slug: 'blusa-clarita',
+      category: 'Blusas',
+      image: '/images/products/blusa_clarita.jpg',
+      price: 24,
+      brand: undefined,
       rating: 4.5,
       numReviews: 8,
-      countInStock: 20,
-      description: 'A popular shirt',
+      countInStock: 3,
+      description: 'Blusa Elegante Amarillo Clarito',
       isFeatured: true,
-      banner: '/images/banner1.jpg',
+      width: 470,
+      height: 696,
     },
     {
-      name: 'Fit Shirt',
-      slug: 'fit-shirt',
-      category: 'Shirts',
-      image: '/images/shirt2.jpg',
-      price: 80,
-      brand: 'Adidas',
+      name: 'Bolso Rosado',
+      slug: 'bolso_rosado',
+      category: 'Bolsos',
+      image: '/images/products/bolso_rosado.jpg',
+      price: 46,
+      brand: undefined,
       rating: 3.2,
       numReviews: 10,
-      countInStock: 20,
-      description: 'A popular shirt',
+      countInStock: 1,
+      description: 'Bolso Pequeño Rosado',
       isFeatured: true,
-      banner: '/images/banner2.jpg',
+      width: 462,
+      height: 711,
     },
     {
-      name: 'Slim Shirt',
-      slug: 'slim-shirt',
-      category: 'Shirts',
-      image: '/images/shirt3.jpg',
-      price: 90,
-      brand: 'Raymond',
-      rating: 4.5,
+      name: 'Pantalón Blanco',
+      slug: 'pantalon_blanco',
+      category: 'Pantalones',
+      image: '/images/products/pantalon_blanco.jpg',
+      price: 30,
+      brand: undefined,
+      rating: 4,
       numReviews: 3,
-      countInStock: 20,
-      description: 'A popular shirt',
+      countInStock: 1,
+      description: 'Pantalon Blanco Ancho',
+      isFeatured: true,
+      width: 466,
+      height: 718,
     },
     {
-      name: 'Golf Pants',
-      slug: 'golf-pants',
-      category: 'Pants',
-      image: '/images/pants1.jpg',
+      name: 'Tacones Azules',
+      slug: 'tacon_azul',
+      category: 'Calzado',
+      image: '/images/products/tacon_azul.jpg',
       price: 90,
-      brand: 'Oliver',
+      brand: undefined,
       rating: 2.9,
       numReviews: 13,
-      countInStock: 20,
-      description: 'Smart looking pants',
+      countInStock: 1,
+      description: 'Tacones Altos Azul Celeste',
+      width: 461,
+      height: 713,
     },
     {
-      name: 'Fit Pants',
-      slug: 'fit-pants',
-      category: 'Pants',
-      image: '/images/pants2.jpg',
-      price: 95,
-      brand: 'Zara',
+      name: 'Trusa Amarilla',
+      slug: 'trusa_amarilla',
+      category: 'Trusas',
+      image: '/images/products/trusa_amarilla.jpg',
+      price: 25,
+      brand: undefined,
       rating: 3.5,
       numReviews: 7,
-      countInStock: 20,
-      description: 'A popular pants',
+      countInStock: 1,
+      description: 'Trusa Amarillo Brillante',
+      width: 471,
+      height: 712,
     },
     {
-      name: 'Classic Pants',
-      slug: 'classic-pants',
-      category: 'Pants',
-      image: '/images/pants3.jpg',
+      name: 'Vestido Rosado',
+      slug: 'vestido_rosado',
+      category: 'Vestidos',
+      image: '/images/products/vestido_rosado.jpg',
       price: 75,
-      brand: 'Casely',
+      brand: undefined,
       rating: 2.4,
       numReviews: 14,
-      countInStock: 20,
-      description: 'A popular pants',
+      countInStock: 1,
+      description: 'Vestido Rosado Natural',
+      width: 468,
+      height: 709,
     },
   ],
 };

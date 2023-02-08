@@ -29,27 +29,29 @@ const ProductItem: React.FC<IProps> = ({ product }) => {
   return (
     <div className="card">
       <Link href={`/product/${product.slug}`}>
-        <Image
-          src={product.image}
-          alt={product.name}
-          className="rounded shadow"
-          width={160}
-          height={160}
-          priority
-        />
+        <div className="relative w-full h-40 rounded shadow">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            loading="lazy"
+            sizes="(max-width: 768px) 50vw,
+              (max-width: 1024px) 100vw"
+          />
+        </div>
       </Link>
-      <div className="flex flex-col items-center justify-center m-auto">
+      <div className="flex flex-col items-center justify-center p-5">
         <Link href={`/product/${product.slug}`}>
           <h2 className="text-lg">{product.name}</h2>
         </Link>
-        <p>{product.brand}</p>
+        <p className="mb-2">{product.brand}</p>
         <p>${product.price}</p>
         <button
-          className="primary-button h-9 w-20 text-center text-xs"
+          className="primary-button"
           type="button"
           onClick={addToCartHandler}
         >
-          Añadir al Carrito
+          Add to cart
         </button>
       </div>
     </div>

@@ -91,7 +91,7 @@ export default function LoginScreen() {
           )}
         </div>
         <div className="mb-4 ">
-          <button className="details-primary-button">Login</button>
+          <button className="primary-button">Login</button>
         </div>
         <div className="mb-4 ">
           Don&apos;t have an account? &nbsp;
