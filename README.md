@@ -131,10 +131,3 @@ build new product api
 add handler for delete
 implement delete api
 List Users For Admin
-create users page
-create users api
-use api in page
-Add Carousel
-create featured products
-feed carousel data
-show popular product
