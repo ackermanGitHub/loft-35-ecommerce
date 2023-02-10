@@ -127,7 +127,3 @@ create upload api
 upload files in edit page
 Create And Delete Products
 add create product button
-build new product api
-add handler for delete
-implement delete api
-List Users For Admin
