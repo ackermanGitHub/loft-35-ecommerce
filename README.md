@@ -137,8 +137,4 @@ use api in page
 Add Carousel
 create featured products
 feed carousel data
-show popular products
-Create Search Page
-create filters
-list products
-show filters
+show popular product
