@@ -120,7 +120,3 @@ Create Product Edit Page
 create edit page
 create api for product
 show product data in form
-Upload Product Image
-create cloudinary account
-get cloudinary keys
-create upload api
