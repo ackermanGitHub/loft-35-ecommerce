@@ -117,6 +117,3 @@ create products page
 create products api
 use api in page
 Create Product Edit Page
-create edit page
-create api for product
-show product data in form
