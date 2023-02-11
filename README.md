@@ -124,6 +124,3 @@ Upload Product Image
 create cloudinary account
 get cloudinary keys
 create upload api
-upload files in edit page
-Create And Delete Products
-add create product button
