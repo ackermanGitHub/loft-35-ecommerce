@@ -114,6 +114,3 @@ add deliver button
 implement click handler
 List Products For Admin
 create products page
-create products api
-use api in page
-Create Product Edit Page
