@@ -112,5 +112,3 @@ Deliver Order For Admin
 create deliver api
 add deliver button
 implement click handler
-List Products For Admin
-create products page
