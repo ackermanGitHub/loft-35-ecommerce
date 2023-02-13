@@ -27,14 +27,14 @@ const ProductItem: React.FC<IProps> = ({ product }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card w-2/5">
       <Link href={`/product/${product.slug}`}>
-        <div className="relative w-full h-40 rounded shadow">
+        <div className="relative w-full pb-[120%] rounded shadow">
           <Image
             src={product.image.src}
             alt={product.name}
             fill
-            loading="lazy"
+            priority
             sizes="(max-width: 768px) 50vw,
               (max-width: 1024px) 100vw"
           />
