@@ -113,7 +113,7 @@ a {
 }
 
 .card {
-  @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
+  @apply block mb-5 rounded-lg border border-gray-200 shadow-md;
 }
 
 .primary-button {
@@ -134,10 +134,8 @@ textarea {
   @apply rounded border p-2 outline-none ring-indigo-300  focus:ring;
 }
 
-/* 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}
- */
+} */
