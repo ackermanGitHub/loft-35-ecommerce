@@ -55,7 +55,7 @@ const Cart: React.FC<IProps> = ({}) => {
                         className="flex item-center"
                       >
                         <Image
-                          src={item.image}
+                          src={item.image.src}
                           alt={item.name}
                           width={50}
                           height={50}
