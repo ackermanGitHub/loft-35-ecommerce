@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
-import Header from './Header';
+import Header from './Nav';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './Footer';
 
@@ -20,7 +20,7 @@ const Layout: React.FC<IProps> = ({ children, title }) => {
       <ToastContainer position="bottom-center" limit={1}></ToastContainer>
       <div className="flex min-h-screen flex-col justify-between">
         <Header />
-        <main className="container m-auto mt-4 px-4">{children}</main>
+        <main className="container m-auto mt-4">{children}</main>
         <Footer />
       </div>
     </>

@@ -13,7 +13,10 @@ const ProductsSroll: React.FC<{ products: IProduct[] }> = ({ products }) => {
   return (
     <div className="flex flex-wrap justify-around max-w-screen-md m-auto">
       {selectedProduct && (
-        <ProductDetail product={selectedProduct} onClick={setSelectedProduct} />
+        <ProductDetail
+          product={selectedProduct}
+          closeProductDetail={() => setSelectedProduct(null)}
+        />
       )}
       {products.map((product: IProduct) => {
         return (

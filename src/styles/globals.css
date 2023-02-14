@@ -81,6 +81,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  overflow: auto;
 }
 
 img {
@@ -95,7 +96,6 @@ html,
 body {
   scroll-behavior: smooth;
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 body {
