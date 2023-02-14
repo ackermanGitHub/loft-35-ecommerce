@@ -1,39 +1,11 @@
 import bcrypt from 'bcryptjs';
 
-export class Product implements IProduct {
-  name: string;
-  slug: string;
-  category: string;
-  image: IStoreImage;
-  price: number;
-  rating: number;
-  numReviews: number;
-  countInStock: number;
-  description: string;
-  brand?: string;
-  isFeatured?: boolean;
-  quantity?: number;
-
-  constructor(product: IProduct) {
-    this.name = product.name;
-    this.slug = product.slug;
-    this.category = product.category;
-    this.image = product.image;
-    this.price = product.price;
-    this.rating = product.rating;
-    this.numReviews = product.numReviews;
-    this.countInStock = product.countInStock;
-    this.description = product.description;
-    this.brand = product.brand;
-    this.isFeatured = product.isFeatured;
-    this.quantity = product.quantity;
-  }
-}
 export interface IProduct {
   name: string;
   slug: string;
   category: string;
   image: IStoreImage;
+  secondaryImages: IStoreImage[];
   price: number;
   rating: number;
   numReviews: number;
@@ -42,20 +14,6 @@ export interface IProduct {
   brand?: string;
   isFeatured?: boolean;
   quantity?: number;
-}
-
-export class User implements IUser {
-  name: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-
-  constructor(user: IUser) {
-    this.name = user.name;
-    this.email = user.email;
-    this.password = user.password;
-    this.isAdmin = user.isAdmin;
-  }
 }
 export interface IUser {
   name: string;
@@ -63,40 +21,16 @@ export interface IUser {
   password: string;
   isAdmin: boolean;
 }
-
-export class StoreImage implements IStoreImage {
-  name: string;
-  src: string;
-  width: number;
-  height: number;
-  background: string;
-
-  constructor(image: IStoreImage) {
-    this.name = image.name;
-    this.src = image.src;
-    this.width = image.width;
-    this.height = image.height;
-    this.background = image.background;
-  }
-}
 export interface IStoreImage {
   name: string;
   src: string;
-  width: number;
-  height: number;
-  background: string;
 }
-
 interface IData {
   users: IUser[];
   products: IProduct[];
 }
-const data: IData = {
-  users: [],
-  products: [],
-};
 
-const staticData = {
+const data: IData = {
   users: [
     {
       name: 'Annet',
@@ -125,125 +59,121 @@ const staticData = {
   ],
   products: [
     {
-      name: 'Blusa Clarita',
-      slug: 'blusa-clarita',
-      category: 'Blusas',
+      name: 'Red Shirt',
+      slug: 'red-shirt',
+      category: 'Shirts',
       image: {
-        name: 'blusa-clarita',
-        src: '/images/products/blusa_clarita.jpg',
-        background: 'white',
-        width: 470,
-        height: 696,
+        name: 'bianca',
+        src: '/images/pexels/bianca.jpg',
       },
+      secondaryImages: [],
       price: 24,
       brand: undefined,
       rating: 4.5,
       numReviews: 8,
       countInStock: 3,
-      description: 'Blusa Elegante Amarillo Clarito',
+      description:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.',
       isFeatured: true,
     },
     {
-      name: 'Bolso Rosado',
-      slug: 'bolso_rosado',
-      category: 'Bolsos',
+      name: 'Beige Blouse',
+      slug: 'beige-blouse',
+      category: 'Blouses',
       image: {
-        name: 'bolso_rosado',
-        src: '/images/products/bolso_rosado.jpg',
-        background: 'white',
-        width: 462,
-        height: 711,
+        name: 'bianca_1',
+        src: '/images/pexels/bianca_1.jpg',
       },
+      secondaryImages: [],
       price: 46,
       brand: undefined,
       rating: 3.2,
       numReviews: 10,
       countInStock: 1,
-      description: 'Bolso Pequeño Rosado',
+      description:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.',
       isFeatured: true,
     },
     {
-      name: 'Pantalón Blanco',
-      slug: 'pantalon_blanco',
-      category: 'Pantalones',
+      name: 'Black T-Shirt',
+      slug: 'black-tshirt',
+      category: 'T-Shirts',
       image: {
-        name: 'pantalon_blanco',
-        src: '/images/products/pantalon_blanco.jpg',
-        background: 'white',
-        width: 466,
-        height: 718,
+        name: 'mart',
+        src: '/images/pexels/mart.jpg',
       },
+      secondaryImages: [
+        {
+          name: 'mart_1',
+          src: '/images/pexels/mart_1.jpg',
+        },
+      ],
       price: 30,
       brand: undefined,
       rating: 4,
       numReviews: 3,
       countInStock: 1,
-      description: 'Pantalon Blanco Ancho',
+      description:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.',
       isFeatured: true,
     },
     {
-      name: 'Tacones Azules',
-      slug: 'tacon_azul',
-      category: 'Calzado',
+      name: 'Pink Long T-Shirt',
+      slug: 'Pink-long-tshirt',
+      category: 'T-Shirts',
       image: {
-        name: 'tacon_azul',
-        src: '/images/products/tacon_azul.jpg',
-        background: 'white',
-        width: 461,
-        height: 713,
+        name: 'mart-production',
+        src: '/images/pexels/mart-production.jpg',
       },
+      secondaryImages: [
+        {
+          name: 'mart-production_1',
+          src: '/images/pexels/mart-production_1.jpg',
+        },
+      ],
       price: 90,
       brand: undefined,
       rating: 2.9,
       numReviews: 13,
       countInStock: 1,
-      description: 'Tacones Altos Azul Celeste',
+      description:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.',
     },
     {
-      name: 'Trusa Amarilla',
-      slug: 'trusa_amarilla',
-      category: 'Trusas',
+      name: 'White T-Shirt',
+      slug: 'white-tshirt',
+      category: 'T-Shirts',
       image: {
-        name: 'trusa_amarilla',
-        src: '/images/products/trusa_amarilla.jpg',
-        background: 'white',
-        width: 471,
-        height: 712,
+        name: 'mockupbee',
+        src: '/images/pexels/mockupbee.jpg',
       },
+      secondaryImages: [],
       price: 25,
       brand: undefined,
       rating: 3.5,
       numReviews: 7,
       countInStock: 1,
-      description: 'Trusa Amarillo Brillante',
+      description:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.',
     },
     {
-      name: 'Vestido Rosado',
-      slug: 'vestido_rosado',
-      category: 'Vestidos',
+      name: 'Denim Pants',
+      slug: 'denim-pants',
+      category: 'Pants',
       image: {
-        name: 'vestido_rosado',
-        src: '/images/products/vestido_rosado.jpg',
-        background: 'white',
-        width: 468,
-        height: 709,
+        name: 'cotton-studio',
+        src: '/images/pexels/cotton-studio.jpg',
       },
+      secondaryImages: [],
       price: 75,
       brand: undefined,
       rating: 2.4,
       numReviews: 14,
       countInStock: 1,
-      description: 'Vestido Rosado Natural',
+      description:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.',
     },
   ],
 };
-
-data.users = staticData.users.map((user) => {
-  return new User(user);
-});
-data.products = staticData.products.map((product) => {
-  product.image = new StoreImage(product.image);
-  return new Product(product);
-});
 
 export default data;

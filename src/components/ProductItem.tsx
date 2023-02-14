@@ -6,9 +6,10 @@ import { Store } from '@/context/Store';
 
 interface IProps {
   product: IProduct;
+  onClick: Function;
 }
 
-const ProductItem: React.FC<IProps> = ({ product }) => {
+const ProductItem: React.FC<IProps> = ({ product, onClick }) => {
   const { state, dispatch } = useContext(Store);
 
   const addToCartHandler = () => {
@@ -28,25 +29,27 @@ const ProductItem: React.FC<IProps> = ({ product }) => {
 
   return (
     <div className="card w-2/5">
-      <Link href={`/product/${product.slug}`}>
-        <div className="relative w-full pb-[120%] rounded shadow">
-          <Image
-            src={product.image.src}
-            alt={product.name}
-            fill
-            priority
-            sizes="(max-width: 768px) 50vw,
+      <div
+        onClick={() => {
+          onClick(product);
+        }}
+        className="relative overflow-hidden w-full pb-[100%] rounded-t-lg"
+      >
+        <Image
+          src={product.image.src}
+          alt={product.image.name}
+          fill
+          priority
+          sizes="(max-width: 425px) 50vw,
+              (max-width: 768px) 75vw,
               (max-width: 1024px) 100vw"
-          />
-        </div>
-      </Link>
+        />
+      </div>
       <div className="flex flex-col items-center justify-center p-5">
-        <Link href={`/product/${product.slug}`}>
-          <h2 className="text-lg">{product.name}</h2>
-        </Link>
+        <h2 className="text-lg">{product.name}</h2>
         <p>${product.price}</p>
         <button
-          className="primary-button"
+          className="primary-button text-xs"
           type="button"
           onClick={addToCartHandler}
         >
