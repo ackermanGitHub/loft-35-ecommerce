@@ -63,7 +63,7 @@ const Payment = () => {
           <button
             onClick={() => router.push('/shipping')}
             type="button"
-            className="default-button"
+            className="rounded bg-gray-100 py-2 px-4 shadow text-black outline-none hover:bg-gray-200 active:bg-gray-300"
           >
             Back
           </button>
@@ -73,7 +73,7 @@ const Payment = () => {
               console.log('/shipping');
             }}
             type="button"
-            className="primary-button"
+            className="rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400  active:bg-amber-500"
           >
             Next
           </button>

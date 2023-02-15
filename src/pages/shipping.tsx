@@ -140,7 +140,9 @@ const ShippingScreen = () => {
           )}
         </div>
         <div className="mb-4 flex justify-between">
-          <button className="primary-button">Next</button>
+          <button className="rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500">
+            Next
+          </button>
         </div>
       </form>
     </Layout>

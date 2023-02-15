@@ -79,13 +79,13 @@ const Header: React.FC<IProps> = () => {
               </Menu.Button>
               <Menu.Items className="absolute right-0 w-32 origin-top-right bg-white shadow-lg">
                 <Menu.Item>
-                  <Link className="dropdown-link" href="/profile">
+                  <Link className="flex p-2 hover:bg-gray-200" href="/profile">
                     Profile
                   </Link>
                 </Menu.Item>
                 <Menu.Item>
                   <Link
-                    className="dropdown-link"
+                    className="flex p-2 hover:bg-gray-200"
                     href="/#"
                     onClick={logoutHandler}
                   >

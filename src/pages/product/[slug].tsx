@@ -69,7 +69,7 @@ const ProductScreen: React.FC<IProps> = () => {
         </ul>
       </div>
       <div>
-        <div className="card p-5">
+        <div className="block mb-5 rounded-lg shadow-md p-5">
           <div className="mb-2 flex justify-between">
             <div>Price</div>
             <div>${product.price} </div>
@@ -78,7 +78,10 @@ const ProductScreen: React.FC<IProps> = () => {
             <div>Status</div>
             <div> {product.countInStock > 0 ? 'In stock' : 'Unavailable'} </div>
           </div>
-          <button className="primary-button w-full" onClick={addToCartHandler}>
+          <button
+            className="rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400  active:bg-amber-500 w-full"
+            onClick={addToCartHandler}
+          >
             Add to cart
           </button>
         </div>

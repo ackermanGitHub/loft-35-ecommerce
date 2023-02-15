@@ -92,7 +92,7 @@ const Cart: React.FC<IProps> = ({}) => {
               </tbody>
             </table>
           </div>
-          <div className="card p-5">
+          <div className="block mb-5 rounded-lg shadow-md p-5">
             <ul>
               <li>
                 <div className="pb-3 test-xl">
@@ -107,7 +107,7 @@ const Cart: React.FC<IProps> = ({}) => {
               <li>
                 <button
                   onClick={() => router.push('login?redirect=/shipping')}
-                  className="primary-button w-full"
+                  className="rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400  active:bg-amber-500 w-full"
                 >
                   Check Out
                 </button>
