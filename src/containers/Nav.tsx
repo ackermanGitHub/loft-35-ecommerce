@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Loft35Sign from '@/components/Loft35_sign';
 import { useSession, signOut } from 'next-auth/react';
 import { Menu } from '@headlessui/react';
 import { Store } from '@/context/Store';
@@ -34,6 +35,7 @@ const Header: React.FC<IProps> = () => {
   return (
     <nav className="flex h-12 items-center px-4 justify-end shadow-md mt-2">
       <div className="flex h-8 items-center">
+        <Loft35Sign></Loft35Sign>
         <Link href="/" className="mx-2">
           <Image
             src="/icons/instagram.svg"
